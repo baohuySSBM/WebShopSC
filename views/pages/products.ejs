@@ -1,0 +1,291 @@
+<html>
+
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--linkHoverColor: #4CAF50;
+		}
+
+		body {
+			font-family: 'Orbitron', sans-serif;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:hover,
+		a.selected {
+			color: #4CAF50;
+		}
+
+		a.button {
+			background: #4CAF50;
+			color: white;
+			border-radius: 1vw;
+			margin: 0 1vw;
+			padding: 10px 40px;
+
+		}
+
+		a.button:hover,
+		a.button.selected {
+			background: #4CAF50;
+		}
+
+		.mainMenuContainer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background: url(/images/MainMenuBackground.png);
+			height: 130px;
+			width: 100%;
+			background-size: cover;
+			box-shadow: 0px 9px 10px #fcee09;
+			position: sticky;
+			top: 0;
+			z-index: 2;
+		}
+
+		.mainMenuContainer>img.logo {
+			width: 250px;
+			padding-left: 50px;
+			padding-top: 10px;
+		}
+
+		.mainMenuContainer>div.shoppingCartContainer {
+			margin-right: 20px;
+		}
+
+		div.pageContainer {
+			display: flex;
+		}
+
+		div.pageContainer>div.subMenuContainer {
+			display: flex;
+			min-width: 250px;
+			background: #ff0000;
+			height: calc(100vh - 130px);
+			position: sticky;
+			top: 130px;
+			width: 250px;
+			flex-direction: column;
+			padding: 10px 10px 10px 35px;
+			box-shadow: 4px 7px 10px #fcee09;
+			box-sizing: border-box;
+			background-repeat: no-repeat;
+			z-index: 1;
+		}
+
+		div.contentContainer {
+			padding-left: 40px;
+			padding-right: 40px;
+			padding-top: 10px;
+			flex-grow: 1;
+			background: #fcee09;
+		}
+
+		div.productContainer {
+			display: flex;
+			background: white;
+			padding: 20px;
+			border-radius: 15px;
+			margin-bottom: 15px;
+			border: 1px solid grey;
+			box-shadow: 3px 3px 10px #e2e2e2;
+		}
+
+		div.productContainer>div.thumbnail {
+			width: 160px;
+			min-width: 160px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		div.productContainer>div.thumbnail>img {
+			max-width: 90%;
+			max-height: 90%;
+		}
+
+		div.productContainer>div.productInformation {
+			box-sizing: border-box;
+			padding-left: 15px;
+			text-align: justify;
+		}
+
+		div.productContainer>div.productInformation>span.name {
+			font-weight: bold;
+		}
+
+		div.productContainer>div.productInformation span.price {
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		div.productContainer>div.productInformation a.buyButton {
+			background: #a8af4c;
+			color: #ffffff;
+			border-radius: 15px;
+			padding: 10px 20px;
+		}
+
+		div.productContainer>div.productInformation a.buyButton:hover {
+			background: #fcee09;
+		}
+	</style>
+	<script>
+
+		// Variable storing the current items of the shopping cart
+		var shoppingCartContent = [];
+
+		// **************************************************************************************************************
+		// Adds a passed item to the shopping cart, stores the cart, and refreshes its view
+		// **************************************************************************************************************
+		function addItemToShoppingCart(productName, productPrice) {
+			fetch('/shoppingCart', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(
+					{
+						name: productName,
+						price: productPrice
+					}
+				)
+			})
+				.then(response => response.json())
+				.then(cartContent => {
+					shoppingCartContent = cartContent;
+					refreshShoppingCartView();
+				});
+		}
+
+		// **************************************************************************************************************
+		// Deletes all items in the shopping cart, stores the cart, and refreshes its view
+		// **************************************************************************************************************
+		function deleteShoppingCart() {
+			shoppingCartContent = [];
+			fetch('/shoppingCart', {
+				method: 'DELETE'
+			});
+			refreshShoppingCartView();
+		}
+
+
+		// **************************************************************************************************************
+		// View of the shopping cart gets refreshed with the items currently included in the cart
+		// **************************************************************************************************************
+		function refreshShoppingCartView() {
+			let shoppingCartContentAsString = "";
+			let totalSum = 0;
+			shoppingCartContent.forEach(function (element) {
+				shoppingCartContentAsString += "<li>" + element.name + " (" + element.price + " " + ")</li>";
+				totalSum += parseFloat(element.price);
+			});
+			document.getElementById('shoppingCartContent').innerHTML = "<ul>" + shoppingCartContentAsString + "</ul>";
+			document.getElementById('shoppingCartSum').innerHTML = totalSum.toFixed(2);
+		}
+
+		// **************************************************************************************************************
+		// Shopping cart content is stored in the local storage of the browser
+		// **************************************************************************************************************
+		function loadShoppingCartContentFromStorage() {
+			fetch('/shoppingCart', {
+				method: 'GET'
+			})
+				.then(response => response.json())
+				.then(cartContent => {
+					shoppingCartContent = cartContent;
+					refreshShoppingCartView();
+				});
+		}
+
+		// Load shopping cart content from storage after page is completely loaded
+		window.onload = loadShoppingCartContentFromStorage;			
+	</script>
+</head>
+
+<body>
+	<div class="applicationContainer">
+
+		<div class="mainMenuContainer">
+
+			<img class="logo" src="/images/Logo.png" />
+
+			<div>
+				<a class="button <% if (currentPage==" products") { %>selected<% } %>" href="/products">Products</a>
+				<a class="button <% if (currentPage==" index") { %>selected<% } %>" href="/">Start</a>
+				<a class="button <% if (currentPage==" about") { %>selected<% } %>" href="/about">About</a>
+			</div>
+
+			<div class="shoppingCartContainer">
+				<strong>Shopping Cart (Sum: <span id="shoppingCartSum"></span> €)</strong> <a
+					href="javascript:deleteShoppingCart()">Remove all items</a>
+				<div id="shoppingCartContent"
+					style="border: 1px solid grey; border-radius: 15px; width: 400px; height:86px;"></div>
+			</div>
+
+		</div>
+
+		<div class="pageContainer">
+
+			<div class="subMenuContainer">
+				<h1>Categories</h1>
+				<% categorizedProducts.categories.forEach(function(category) { %>
+					<a class="<% if (currentCategoryId==category.id) { %>selected<% } %>"
+						href="/products/<%= category.id %>/">
+						<b>► <%= category.name %></b> (<%= category.products.length %>)
+					</a>
+					<% }); %>
+			</div>
+
+			<div class="contentContainer">
+				<h1>
+					<% var currentCategory=categorizedProducts.categories.find(obj=> {return obj.id ===
+						currentCategoryId}); %>
+						<%=currentCategory.name %>
+				</h1>
+				<div class="productListContainer">
+
+					<% currentCategory.products.forEach(function(product) { %>
+
+						<div class="productContainer">
+							<div class="thumbnail">
+								<img src="/productimages/<%=product.productImage%>" />
+							</div>
+							<div class="productInformation">
+								<span class="name">
+									<%= product.name %>
+								</span>
+								<p class="description">
+									<%= product.description %>
+								</p>
+
+								<div style="display: flex; justify-content: space-between;">
+									<span class="price">
+										<%= product.price %> €<br />
+											<span style="font-size: 10px; color: grey; font-weight: normal;">inkl.
+												Mehrwertsteuer</span>
+									</span>
+									<a href="javascript:addItemToShoppingCart('<%=product.name%>','<%=product.price%>')"
+										class="buyButton">Kaufen</a>
+								</div>
+							</div>
+						</div>
+
+						<% }); %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

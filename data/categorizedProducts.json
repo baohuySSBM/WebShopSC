@@ -1,0 +1,65 @@
+{
+	"categories": [
+		{
+			"id": "VideoGameConsoles",
+			"name": "Video Game Consoles",
+			"products": [
+				{
+					"id": "p1",
+					"name": "Nintendo Switch",
+					"description": "Hast du schon mal ein Spiel abgebrochen, weil du nicht genug Zeit zum Spielen hattest? Die Nintendo Switch-Konsole passt sich deiner Situation an, damit du trotz der täglichen Hektik die Spiele spielen kannst, die du spielen willst. In dieser neuen Ära musst du dein Leben nicht anpassen, um Spiele spielen zu können – stattdessen passt sich deine Konsole deinen Umständen an. Spiele wann, wo und mit wem du willst, mit der Freiheit und Flexibilität der verschiedenen Spielmodi.",
+					"price": "299.95",
+					"productImage": "NintendoSwitchProductImage.png"
+				},
+				{
+					"id": "p2",
+					"name": "Playstation 5",
+					"description": "Freue dich auf blitzschnelles Laden mit einer ultraschnellen SSD, eine realistischere Spielerfahrung durch haptisches Feedback, adaptive Trigger-Tasten und 3D-Audio sowie eine völlig neue Generation unglaublicher PlayStation-Spiele. Nutze die Leistung der speziell entwickelten CPU, GPU und SSD mit integriertem I/O und erlebe, wie diese PlayStation-Konsole die Gaming-Welt revolutioniert.",
+					"price": "599.99",
+					"productImage": "Playstation5ProductImage.png"
+				},
+				{
+					"id": "p3",
+					"name": "Xbox Series X",
+					"description": "Xbox Series X ist die schnellste und leistungsstärkste Konsole aller Zeiten. Genießen Sie Tausende Spiele aus vier Konsolengenerationen, die sich nie besser gespielt haben als auf Xbox Series X. Das Herzstück der Xbox Series X ist die Xbox Velocity Architecture, die eine speziell entwickelte SSD und Software vereint und Spielwelten in Sekundenschnelle lädt. Spielen Sie durch Abwärtskompatibilität Tausende von Titeln aus vier Konsolengenerationen darunter Xbox One, Xbox 360, und Original Xbox Titel.",
+					"price": "499.00",
+					"productImage": "XboxSeriesXProductImage.png"
+				},
+				{
+					"id": "p4",
+					"name": "Nintendo Classic Mini",
+					"description": "Das Nintendo Classic Mini: Nintendo Entertainment System ist eine Mini-Version des bahnbrechenden NES, das 1986 in €pa auf den Markt kam. Verbinde das Nintendo Classic Mini: Nintendo Entertainment System einfach mit dem Fernseher, schnapp dir den altbekannten grauen Controller und erlebe tolle NES-Spiele ganz neu – in HD mit 60 Hz!",
+					"price": "99.00",
+					"productImage": "NintendoClassicMiniProductImage.png"
+				}
+			]
+		},
+		{
+			"id": "VideoGames",
+			"name": "Video Games",
+			"products": [
+				{
+					"id": "p5",
+					"name": "Mario Party Superstars (Nintendo Switch)",
+					"description": "Stürzt euch in eine Superstar-Sammlung aus Minispielen der Mario Party-Reihe! Sammelt Münzen und Sterne im Brettspiel-Modus oder übt einfach nur ein bisschen im Modus „Freie Wahl“. Es gibt 100 klassische Minispiele aus den Nintendo 64- und Nintendo GameCube-Titeln und mehr zu entdecken. Egal, ob ihr auf derselben Konsole, lokal oder online spielt, der Partyspaß kennt keine Grenzen! Mario Party ist zurück mit fünf klassischen Nintendo 64-Spielbrettern der Mario Party-Reihe. Auf Peachs Geburtstagstorte wird das Wettrennen um die meisten Sterne zu einer zuckrigen Angelegenheit, behaltet bei Space-Land den Countdown im Auge, um nicht von Bowsers Münzenstrahl getroffen zu werden, und erlebt noch viele weitere Klassiker.",
+					"price": "69.95",
+					"productImage": "NintendoMarioPartySuperstarsProductImage.png"
+				},
+				{
+					"id": "p6",
+					"name": "Fifa 2023 (Playstation 5)",
+					"description": "The World's Game: EA SPORTS™ FIFA 23 sorgt für noch realistischeren und noch intensiveren Fußball. Die Weiterentwicklungen der HyperMotion2-Technologie basieren auf der doppelten Menge an realem Motion-Capturing und ermöglichen in jeder einzelnen Partie mehr authentische Fußball-Animationen als je zuvor. Spiele im Rahmen der FIFA 23-Saison die größten Turniere der Fußballwelt. Erlebe den FIFA World Cup™ der Männer und der Frauen, spiele dank maßgeschneiderter HyperMotion2-Animationen erstmals mit Frauen-Vereinsmannschaften und freue dich auf Cross-Play-Features, die das Spiel mit Freundinnen und Freunden noch stärker erleichtern.",
+					"price": "79.99",
+					"productImage": "Fifa2023ProductImage.png"
+				},
+				{
+					"id": "p7",
+					"name": "Gotham Knights (PlayStation 5)",
+					"description": "Eine neue, weitreichende kriminelle Unterwelt hat sich in den Straßen von Gotham City ausgebreitet. Es liegt nun an der Batman-Familie - Batgirl, Nightwing, Red Hood und Robin - Gotham zu beschützen und Hoffnung zu ihren Einwohnern, Disziplin zu ihren Polizisten und Furcht zu ihren Kriminellen zu bringen. Löse Rätsel, die die dunkelsten Kapitel der Geschichte der Stadt verbinden und besiege berüchtigte Schurken in epischen Konfrontationen. Gotham Knights ist ein Open-World Action-Rollenspiel, das in der bis jetzt dynamischsten und interaktivsten Version von Gotham City stattfindet. Du kannst entweder allein oder mit einem anderen Helden zusammen die fünf verschiedenen Stadtteile von Gotham patrouillieren und kriminelle Aktivität beenden, wann immer du sie findest. Dein Vermächtnis beginnt jetzt. Werde zum Ritter der Nacht.",
+					"price": "49.99",
+					"productImage": "GothamKnightsProductImage.png"
+				}
+			]
+		}
+	]
+}
